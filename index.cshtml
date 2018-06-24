@@ -1,0 +1,109 @@
+@{
+    var db = Database.Open("MjanjaData");
+    var sql = "SELECT * FROM webpages_Membership";
+    int rows = Convert.ToInt32(db.Query(sql).Count());
+
+    var sql1 = "SELECT * FROM Categories";
+    int rows1 = Convert.ToInt32(db.Query(sql1).Count());
+
+    var sql2 = "SELECT * FROM Properties";
+    int rows2 = Convert.ToInt32(db.Query(sql2).Count());
+
+    var sql3 = "SELECT * FROM Orders";
+    int rows3 = Convert.ToInt32(db.Query(sql3).Count());
+      
+}
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>Welcome</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+        <link rel="icon" href="@Href("/blue_icon.png")">
+        <link href="@Href("~/css/Style.css")" rel="stylesheet" />
+        <link rel="stylesheet" href="@Href("~/CSS/material.min.css")"/>`  
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
+        <script src="https://code.getmdl.io/1.2.1/material.min.js"></script>
+    </head>
+    <body>
+        <div class="demo-layout-waterfall mdl-layout mdl-js-layout">
+            <header class="mdl-layout__header mdl-layout__header--waterfall">
+                <!-- Top row, always visible -->
+                <div class="mdl-layout__header-row">
+                    <!-- Title -->
+                    <div class="mdl-layout-title"><a href="@Href("~/index.cshtml")"><h2>Doctors</h2></a></div>
+                    <div class="mdl-layout-spacer"></div>
+                </div>
+            </header>
+            <div class="mdl-layout__content">
+                <div class="page-content"><!-- Your content goes here -->
+                    <div>
+                        <div style="text-align: center">
+                            <div><h5>Welcome to on-line doctors.</h5></div>
+                            <div>
+                                <p>
+                                    Currently people travel from home to the hospital or the office of the physician to book an appointment. Considering the traffic jams caused by reckless drivers and poor situation of our roads that procedure is time consuming. With the low number of medical facilities compared to the current population of the country why not book from home or any other place leaving the hospitals dealing with other problems like emergencies.
+                                </p>
+                            </div>
+                            <div>
+                                <p>
+                                    Now you can do that online
+                                </p>
+                            </div>
+                            <div>
+                                <button style="width: 25%;" onclick="window.location = '@Href("~/gallery")';" name="submit" type="submit" value="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent">
+                                    Let's go!
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mdl-grid" style="max-width: 900px; margin: auto;">
+                        <div class="mdl-cell mdl-card mdl-shadow--4dp" style="padding-bottom: 0;">
+                            <div style="height: 50%; text-align: center;padding-top: 17%;">
+                                <b>@rows</b>
+                            </div>
+                            <div style="height: 50%;" class="mdl-card__actions mdl-card--border">
+                                <p><i>Number of registered users.</i></p>
+                            </div>
+                        </div>
+                        <div class="mdl-cell mdl-card mdl-shadow--4dp" style="padding-bottom: 0;">
+                            <div style="height: 50%; text-align: center;padding-top: 17%;">
+                                <b>@rows1</b>
+                            </div>
+                            <div style="height: 50%;" class="mdl-card__actions mdl-card--border">
+                                <p><i>Number of hospitals registered with the system.</i></p>
+                            </div>
+                        </div>
+                        <div class="mdl-cell mdl-card mdl-shadow--4dp" style="padding-bottom: 0;">
+                            <div style="height: 50%; text-align: center;padding-top: 17%;">
+                                <b>@rows2</b>
+                            </div>
+                            <div style="height: 50%;" class="mdl-card__actions mdl-card--border">
+                                <p><i>Number of specialists available in the system.</i></p>
+                            </div>
+                        </div>
+                        <div class="mdl-cell mdl-card mdl-shadow--4dp" style="padding-bottom: 0;">
+                            <div style="height: 50%; text-align: center;padding-top: 17%;">
+                                <b>@rows3</b>
+                            </div>
+                            <div style="height: 50%;" class="mdl-card__actions mdl-card--border">
+                                <p><i>Number of Appointments made through the system.</i></p>
+                            </div>
+                        </div><br/>
+                    </div>
+                    <div style="padding-left: 20%; width: 75%;">
+                        <img src="/graph.cshtml" alt="grahp data"/>
+                    </div>
+                </div>
+            </div>
+            <footer class="mdl-mini-footer">
+                <div class="mdl-mini-footer__left-section" style="text-align: center;">
+                    <ul class="mdl-mini-footer__link-list">
+                        &copy;@DateTime.Now.Year Doctor. All rights reserved.
+                    </ul>
+                </div>
+            </footer>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,67 @@
+﻿<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+        <title>Doctor  - @Page.Title</title>
+        <link rel="icon" href="~/blue_icon.png">
+        <link href="@Href("~/css/Style.css")" rel="stylesheet" />
+        <link rel="stylesheet" href="@Href("~/CSS/material.min.css")"/>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
+        <script defer src="https://code.getmdl.io/1.2.1/material.min.js"></script>
+        <style>
+            .demo-layout-waterfall .mdl-layout__header-row .mdl-navigation__link:last-of-type {
+                padding-right: 0;
+            }
+        </style>
+
+        @RenderSection("head", required: false)
+    </head>
+    <body>
+        <div class="demo-layout-waterfall mdl-layout mdl-js-layout">
+            <header class="mdl-layout__header mdl-layout__header--waterfall">
+                <!-- Top row, always visible -->
+                <div class="mdl-layout__header-row">
+                    <!-- Title -->
+                    <div class="mdl-layout-title"><a href="@Href("~/index.cshtml")"><h3>Doctors</h3></a></div>
+                    <div class="mdl-layout-spacer"></div>
+                    @RenderPage("~/Shared/Partials/_Search.cshtml")
+                </div>
+                <!-- Bottom row, not visible on scroll -->
+                <div class="mdl-layout__header-row">
+                    <div class="mdl-layout-spacer"></div>
+                    <!-- Navigation -->
+                    <nav class="mdl-navigation">
+                            @MembershipHelpers.AccountSummary()
+                    </nav>
+                </div>
+            </header>
+            <div class="mdl-layout__drawer mdl-layout--small-screen-only">
+                <span class="mdl-layout-title">Doctors</span>
+                <nav class="mdl-navigation">
+                        @MembershipHelpers.AccountSummary()
+                </nav>
+            </div>
+            <div class="mdl-layout__content">
+                <div class="page-content"><!-- Your content goes here -->
+                    <div id="content">
+                        <div id="categories">
+                            @RenderPage("~/Shared/Partials/_Categories.cshtml")
+                        </div>                 
+                        <div id="main">                     
+                            @RenderBody()
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <footer class="mdl-mini-footer">
+                <div class="mdl-mini-footer__left-section" style="text-align: center;">
+                    <ul class="mdl-mini-footer__link-list">
+                        &copy;@DateTime.Now.Year Doctor. All rights reserved.
+                    </ul>
+                </div>
+            </footer>
+        </div>
+    </body>
+</html>

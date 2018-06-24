@@ -1,0 +1,75 @@
+﻿@{
+  Layout = "~/Shared/Layouts/_Layout.cshtml";
+  Page.Title = "Doctor"; 
+  // Create a blank cart in Session if not present     
+    if (Session["cart"] == null){
+        Session["cart"] = new Cart();
+     }
+    // Get current cart from Session     
+    Cart cart = (Cart)Session["cart"];
+    
+    if (IsPost){
+        if (Request["productID"] != null){ 
+            // Form posted from Product Details Page
+            var productID = Request["productID"];         
+            var size = Request["size"];         
+            var price = Request["price"];
+            
+            cart.AddItem(productID.AsInt(), size, price.AsDecimal());     
+         }
+         else if (Request["removeIndex"] != null){         
+             // Form posted by Cart Remove Item button         
+             var removeIndex = Request["removeIndex"].AsInt();         
+             cart.RemoveItem(removeIndex);     
+         } 
+      }
+ } 
+<h1>Booking Phase</h1>
+  
+    @if(cart.Items.Count() == 0){
+        <p>You have not selected any doctor.</p>
+    } 
+    else {     
+<text>             
+        <table id="cartTable">
+            <tr>
+                <th class="product">Product</th>
+                <th class="size">Session</th>
+                <th class="price">Price</th>
+                <th>&nbsp;</th>
+            </tr>
+            @{                   
+                    // Declare and initialise index variable, i                 
+                    int i = 0;             
+            }
+            @foreach (var item in cart.Items)
+            {
+                <tr>
+                    <td class="product">@Products.GetProductNameFromId(item.ProductID)</td>
+                    <td class="size">@item.Size</td>                     
+                    <td class="price">Ksh @item.Price</td>
+                    <td class="remove">
+                        <form action="Cart" method="post">
+                            @Html.Hidden("removeIndex", i)
+                            <!--<input type="submit" value="Remove" />-->
+                            <button name="submit" type="submit" value="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent">
+                                Remove
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+                     // increment index
+                     i++;
+            }          
+                <tr class="cartTotal">         
+                    <td colspan="2">&nbsp;</td>         
+                    <td>Total: Ksh @cart.TotalValue</td>
+                    <td>&nbsp;</td>
+                </tr> 
+        </table>
+ </text>
+<div id="cartButtons">             
+    <a href="/gallery" class="linkButton mdl-button mdl-js-button mdl-button--raised mdl-button--accent">More Doctors?</a><br/><br/>                
+    <a href="/Checkout" class="linkButton mdl-button mdl-js-button mdl-button--raised mdl-button--accent">Checkout</a>
+</div> 
+ } 

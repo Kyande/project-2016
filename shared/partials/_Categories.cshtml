@@ -1,0 +1,14 @@
+﻿@{     
+       var db = Database.Open("MjanjaData");     
+       var sqlSelect = "SELECT * FROM Categories;"; 
+       }  
+ <ul> 
+  @foreach (var category in db.Query(sqlSelect)) 
+      {     
+         <li>
+             <a href="/Product/@category.categoryTitle">@category.categoryTitle</a>
+         </li> 
+       } 
+ </ul>
+
+

@@ -1,0 +1,39 @@
+﻿@{
+   Layout = "~/Shared/Layouts/_AdminLayout.cshtml";
+   Page.Title = "Delete Doctor";
+   
+   var productId = UrlData[0];
+   if(productId.IsEmpty()){
+       Response.Redirect("~/Admin/Products/");
+   }
+   
+   var db = Database.Open("MjanjaData");
+   
+   if (IsPost)
+    {
+        var sqlDelete = "DELETE FROM Properties WHERE ProductID = @0";
+        db.Execute(sqlDelete, productId);
+        Response.Redirect("~/Admin/Products/");
+    }
+    var sqlSelect = "SELECT * FROM Properties WHERE ProductID = @0";
+    var product = db.QuerySingle(sqlSelect, productId);
+         
+}
+
+<h1>Delete Doctor</h1>
+@{
+  if(!Admin.Product(productId)){
+      <p>Unable to delete the @product.title category as it has associated orders.</p>   
+  }
+  else{
+      <p>
+          Are you sure you want to delete the @product.title category?
+      </p>
+      <div style="margin">
+          <form action="" method="post" id="deleteForm">
+              <input type="button" onclick="window.location = '@Href("~/Admin/Categories/")';" value="Cancel" />
+              <input type="submit" value="Delete" />
+          </form>
+      </div>   
+  }
+}

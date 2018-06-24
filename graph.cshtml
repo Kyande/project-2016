@@ -1,0 +1,11 @@
+﻿@{
+    var db = Database.Open("MjanjaData");
+    var data = db.Query("SELECT count(*),OrderDateTime FROM Orders WHERE OrderDateTime > '12/1/2016' GROUP BY OrderDateTime ORDER BY OrderDateTime asc");
+    var myChart = new Chart(width: 900, height: 400, theme: ChartTheme.Vanilla)
+        .AddTitle("Number of appointments againts date")
+        .AddSeries(
+            name: "Appointments",
+            xValue: data, xField: "OrderDateTime",
+            yValues: data, yFields: "Column1")
+        .Write();
+}

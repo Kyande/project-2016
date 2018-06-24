@@ -1,0 +1,324 @@
+/* General Styles ---------------------------------*/ 
+*, html, body {     
+    margin: 0px;     
+    padding: 0px; 
+    
+} 
+body { 
+   
+    background-color:rgb(254, 254, 254);     
+    color: rgba(70, 67, 67, 0.86);
+    width: 95%;    
+    font-family: 'Segoe UI', 'Segoe UI Emoji', 'Segoe UI Symbol';     
+    font-size: 1.25em; 
+    
+} 
+a:link {     
+    color: #43403b;     
+    text-decoration: none; 
+    
+} 
+a:visited {     
+    color: #8a7267;     
+    text-decoration: none; 
+    
+} 
+a:hover {     
+    color: #c59c8a;     
+    text-decoration: none; 
+    
+} 
+h1, h2 {      
+    margin-bottom: 10px; 
+    
+} 
+input, select {     
+    padding: 5px; 
+    
+} 
+input[type="text"] 
+{     
+    border: 1px solid #cdcdcd; 
+    
+} 
+/* Layout ---------------------------------*/ 
+#page {     
+    margin: 0 auto;     
+    width: auto;     
+    background-color: transparent; 
+    
+} 
+#header {     
+    height: 10%; 
+    
+} 
+#content, #footer {     
+    border-top: 1px solid #cdcdcd;
+         
+    clear: both;
+    width: 100%;
+    margin: 0px 10px 0px 10px; 
+        
+    padding: 5px;
+    
+    
+}  
+#footer {
+         
+    color:transparent;     
+    padding: 10px;     
+    text-align: center; 
+    
+} 
+
+
+
+    .logo a {
+        float: left;
+        margin: 15px;
+        font-size: 3em;
+    }
+
+    .logo1 a {
+        float: left;
+        margin: 15px;
+        font-size: 1em;
+    }
+
+    #categories {
+        float: left;
+        width: 10%;
+    }
+
+    #main {
+        float: left;
+        width: 85%;
+        margin-bottom: 20px;
+        border-left: 1px solid #cdcdcd;
+        padding-left: 5px;
+    }
+
+    #categories ul {
+        border-bottom: 1px solid #cdcdcd;
+        margin-bottom: 20px;
+    }
+
+    #categories ul li {
+        list-style: none;
+        border-top: 1px solid #cdcdcd;
+        margin: 0;
+        padding: 10px;
+    }
+
+    #categories ul li:hover {
+        background-color: #ddd;
+    }
+
+    #main h1 {
+        border-bottom: 1px dashed #cdcdcd;
+    }
+    /* Product List ---------------------------------*/
+    #productsList {
+        list-style: none;
+        margin: 0px;
+        padding: 0px;
+    }
+
+    #productsList li {
+        float: left;
+        margin: 12px;
+        width: 215px;
+    }
+
+    #productsList h3 {
+        font-size: 1.75em;
+        font-weight: normal;
+        margin-bottom: 5px;
+        padding: 0px;
+    }
+
+    #productsList .price {
+        font-size: 1em;
+        font-style: italic;
+        color: #999;
+    }
+    /* Product Details 
+    ---------------------------------*/
+    #productDetails {
+        float: left;
+        width: 450px;
+    }
+
+    #productDetails .price {
+        font-size: 1em;
+        font-style: italic;
+        color: #999;
+        margin-bottom: 10px;
+    }
+
+    #orderForm {
+        float: left;
+    }
+
+    #orderForm fieldset {
+        width: 230px;
+        margin: 0px;
+        padding: 10px;
+        border: 1px solid #cdcdcd;
+    }
+
+    #orderForm legend {
+        font-weight: bold;
+        padding: 0px 10px 0px 10px;
+    }
+
+    #orderForm label {
+        font-weight: bold;
+        padding-right: 5px;
+    }
+
+    #orderForm p {
+        padding: 5px 0px 5px 0px;
+    }
+
+    #orderForm input[type="submit"] {
+        margin-top: 20px;
+        padding: 5px;
+        width: 100%;
+    }
+
+    #headerRight {
+        float: right;
+        margin-right: 20px;
+    }
+
+    #search {
+        margin-top: 20px;
+        text-align: right;
+    }
+
+    /* Search Results ---------------------------------*/
+    #searchResult li {
+        margin-top: 10px;
+        font-size: 1.2em;
+        list-style: none;
+    }
+
+    /* Cart ---------------------------------*/
+
+    #cartTable {
+        width: 100%;
+        border: none;
+        border-spacing: 0px;
+    }
+
+    #cartTable th {
+        border-bottom: 1px solid #cdcdcd;
+    }
+
+    #cartTable td, th {
+        padding: 0px;
+    }
+
+    #cartTable .product {
+        text-align: left;
+        width: 50%;
+    }
+
+    #cartTable .size {
+        text-align: center;
+        width: 10%;
+    }
+
+    #cartTable .price {
+        text-align: right;
+        width: 10%;
+    }
+
+    #cartTable .cartTotal td {
+        margin-top: 10px;
+        border-top: 1px solid #cdcdcd;
+        text-align: right;
+        font-weight: bold;
+    }
+
+    table .remove {
+        text-align: right;
+        width: 10%;
+    }
+
+    div #cartButtons {
+        text-align: center;
+        width: 100%;
+        margin: 0.293% 0.10% 0.147% 0.10%;
+    }
+
+    .linkButton {
+        border: 1px solid #cdcdcd;
+        width: 100%;
+        background-color: #efefef;
+        margin: 0px;
+        padding: 10px;
+    }
+
+    .linkButton:hover {
+        background-color: #ddd;
+    }
+    /* Account Forms ---------------------------------*/
+    .accountForm label {
+        font-weight: bold;
+        padding-right: 5px;
+    }
+
+    .accountForm p {
+        padding: 5px 0px 5px 0px;
+    }
+
+    input[type="password"] {
+        border: 1px solid #cdcdcd;
+    }
+    /* Validation ---------------------------------*/
+    .validation-summary-errors, span.field-validation-error {
+        color: #FF0000;
+    }
+
+    input.field-validation-error {
+        border: 1px solid #FF0000;
+        background-color: #FFCCCC;
+    }
+
+    #accountSummary {
+        float: right;
+        margin-top: 10px;
+        text-align: right;
+    }
+
+    #accountSummary img {
+        vertical-align: middle;
+    }
+
+    /* Checkout ---------------------------------*/
+    #checkout h2 {
+        width: 30%;
+        border-bottom: 1px dashed #cdcdcd;
+        margin: 25px 0px 20px 0px;
+    }
+
+    #checkout label {
+        font-weight: bold;
+        padding-right: 5px;
+        width: 10em;
+        float: left;
+    }
+
+    #checkout p {
+        padding: 5px 0px 5px 0px;
+    }
+
+    #checkout input[type="submit"] {
+        padding: 5px 45px 5px 45px;
+    }
+
+.mdl-card{
+    display: inline-block;    
+}

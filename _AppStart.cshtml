@@ -1,0 +1,10 @@
+﻿@{     
+       WebSecurity.InitializeDatabaseConnection("MjanjaData", "UserProfile", "UserId", "Email", true);
+       
+        WebMail.SmtpServer = "<smtp server address>";     
+        WebMail.SmtpPort = 1080;     
+        WebMail.EnableSsl = true;    
+        WebMail.UserName = "<email account user name>";    
+        WebMail.From = "<email account to send mail from>";     
+        WebMail.Password = "<email account password>";  
+  }

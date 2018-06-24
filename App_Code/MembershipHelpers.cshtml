@@ -1,0 +1,28 @@
+﻿@helper AccountSummary(){
+    var cartItemCount = 0;              
+    if (Session["cart"] != null){         
+        cartItemCount = ((Cart)Session["cart"]).Items.Count;     
+    }   
+    if(WebSecurity.IsAuthenticated) {       
+<text> 
+            <a class="mdl-navigation__link" href="@Href("~/gallery.cshtml")">Home</a>  |
+    Welcome <a class="mdl-navigation__link" >@WebSecurity.CurrentUserName</a> |
+            <a class="mdl-navigation__link" href="@Href("~/Account/ChangePassword")">Change Password</a> |
+            <a class="mdl-navigation__link" href="@Href("~/Cart")">Doctor - @cartItemCount Selected</a> |
+            <a class="mdl-navigation__link" href="@Href("~/Account/Logout")">Logout</a> |
+            @if (Roles.IsUserInRole(WebSecurity.CurrentUserName, "Admin")){                 
+<text>                     
+            <a class="mdl-navigation__link" href="@Href("~/Admin/Default")">Admin</a>                 
+</text>                
+            }   
+</text>
+     } else {
+<text>
+            <a class="mdl-navigation__link" href="@Href("~/gallery.cshtml")">Home</a>
+            <a class="mdl-navigation__link" href="@Href("~/Account/Login")">Login</a>
+            <a class="mdl-navigation__link" href="@Href("~/Cart")">Doctor - @cartItemCount Selected</a>
+            <!--<a class="mdl-navigation__link" href="@Href("~/Cart")">Doctor</a> |-->
+            <a class="mdl-navigation__link" href="@Href("~/Account/Register")">Register</a>
+</text> 
+    }
+ }

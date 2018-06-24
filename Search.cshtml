@@ -1,0 +1,24 @@
+﻿@{         
+           Layout = "~/Shared/Layouts/_Layout.cshtml";     
+           Page.Title = "Catalog Search";          
+           var db = Database.Open("MjanjaData"); 
+           var searchWords = Request["searchTerm"].Split(' ');     
+           IEnumerable<dynamic> result = Enumerable.Empty<string>();          
+           var sqlSelect = "SELECT ProductID, title FROM Properties WHERE " +                      
+                           "title LIKE @0 OR description LIKE @0 OR keywords LIKE @0";          
+                           
+           foreach(var word in searchWords){         
+               result = result.Concat(db.Query(sqlSelect, "%" + word + "%").ToList());     
+           }      
+   }
+<h1>Search Results</h1> 
+ 
+<p>@result.Count() Doctors found matching: <em>@Request["searchTerm"]</em></p>
+  
+<ul id="searchResult">     
+    @foreach (var item in result){         
+        <li>             
+            <a href="/ProductDetails/@item.productID">@item.title</a>         
+        </li>
+    } 
+</ul> 

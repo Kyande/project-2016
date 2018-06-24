@@ -1,0 +1,60 @@
+﻿@{          
+            Layout = "~/Shared/Layouts/_Layout.cshtml";          
+            var productID = !UrlData[0].IsEmpty() ? UrlData[0] : "0";          
+            var db = Database.Open("MjanjaData");        
+            var sqlSelect = "SELECT * FROM Properties WHERE ProductID = @0";          
+            var Properties = db.QuerySingle(sqlSelect, productID);      
+            } 
+@if (Properties == null) {     
+    <p>         
+        Unable to fetch Doctors details.         
+        Try browsing one of the Hospitals listed to the left.     
+    </p> } else {     
+             Page.Title = Properties.title;     
+             <text>         
+       <h1>@Properties.title</h1>         
+   <div id="productDetails">
+         <p class="price">                 
+             Ksh @Properties.price             
+         </p>
+       <p>@Products.ShowProductThumbnail(productID.ToString())</p>            
+       <p>@Properties.description</p>         
+   </div>         
+<div id="orderForm">             
+    <form action="/Cart" method="post">                 
+        <fieldset>                     
+            <legend>Place Request</legend>                     
+            <p>                         
+                <label for="size">Request:</label>                         
+                <select name="size">                             
+                    <option value="Book">Book</option>                             
+                                                
+                                            
+                </select>                    
+            </p>                     
+            <p>                         
+              @Html.Hidden("ProductID", productID)                        
+              @Html.Hidden("price", Properties.price)                          
+                <button name="submit" type="submit" value="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent">
+                            Book Doctor
+                </button>                    
+            </p>                
+             </fieldset>             
+    </form>
+     <fieldset>         
+         <legend>Share</legend> 
+         <p>@GooglePlusOne.PlusOneButton() </p> 
+          
+         <p>@TwitterGoodies.TweetButton(url: "", largeButton: true, hashtag: "", tweetText: "Hasof Retailers!")
+         </p>
+                   
+         <p>            
+              @{ 
+                 string currentUrl = Request.Url.ToString(); 
+                 }             
+@Facebook.LikeButton(currentUrl,width:460,buttonLayout:"standard",height:50,showFaces:true)         
+         </p>     
+     </fieldset>        
+     </div>     
+</text> 
+} 
